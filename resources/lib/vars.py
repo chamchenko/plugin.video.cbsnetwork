@@ -1,12 +1,12 @@
 # Copyright: (c) 2016, Chamchenko
 # GNU General Public License v2.0+ (see LICENSE.txt or https://www.gnu.org/licenses/gpl-2.0.txt)
-# This file is part of plugin.video.cbs
+# This file is part of plugin.video.cbsnetwork
 # -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
 import xbmcaddon
 from xbmc import getInfoLabel
-ADDON_ID = 'plugin.video.cbs'
+ADDON_ID = 'plugin.video.cbsnetwork'
 REAL_SETTINGS = xbmcaddon.Addon(id=ADDON_ID)
 ADDON_NAME = REAL_SETTINGS.getAddonInfo('name')
 SETTINGS_LOC = REAL_SETTINGS.getAddonInfo('profile')

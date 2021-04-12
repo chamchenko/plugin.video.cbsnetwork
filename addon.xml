@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="plugin.video.cbs" version="0.1.0" name="CBS" provider-name="CHAMCHENKO">
+<addon id="plugin.video.cbsnetwork" version="0.1.0" name="CBS Network" provider-name="CHAMCHENKO">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
         <import addon="script.module.codequick" version="0.9.13"/>
@@ -12,8 +12,8 @@
     <extension point="xbmc.addon.metadata">
         <summary lang="en_GB">Kodi add-on for watching Videos and Live TV from cbs.com</summary>
         <platform>all</platform>
-        <license>GNU GENERAL PUBLIC LICENSE. Version 3, June 2007</license>
-        <source>https://github.com/chamchenko/plugin.video.cbs</source>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+        <source>https://github.com/chamchenko/plugin.video.cbsnetwork</source>
         <website>https://cbs.com/</website>
         <assets>
             <icon>resources/images/icon.png</icon>
