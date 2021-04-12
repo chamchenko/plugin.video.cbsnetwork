@@ -13,7 +13,7 @@ from .tools import *
 
 
 def addLink(name, u, mode, infoList=False, infoArt=False, total=0, favID=None, infoCast=None):
-    name = name.encode("utf-8")
+    name = name.encode('ascii', 'replace')
     log('addLink, name = %s' % name)
     liz=xbmcgui.ListItem(name)
     liz.setProperty('IsPlayable', 'true')
@@ -44,7 +44,7 @@ def addLink(name, u, mode, infoList=False, infoArt=False, total=0, favID=None, i
 
 def addDir(name, u, mode=None, infoArt=False, infoList=False, total=0, favID=None, infoCast=False):
 
-    name = name.encode("utf-8")
+    name = name.encode('ascii', 'replace')
     log('addDir, name = %s' % name)
     liz = xbmcgui.ListItem(name)
     liz.setProperty('IsPlayable', 'false')
