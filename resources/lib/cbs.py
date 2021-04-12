@@ -49,7 +49,7 @@ class CBS(object):
             license_url = playbackinfo['license_url']
             authorization = playbackinfo['authorization']
             liz = xbmcgui.ListItem(name, path=playbackURL)
-            URL_LICENCE_KEY = LICENCE_KEY_TEMP % (license_url, PC_UA, BASE_URL, authorization, 'cbsi.live.ott.irdeto.com')
+            URL_LICENCE_KEY = LICENCE_KEY_TEMP % (license_url, PC_UA, BASE_URL, authorization, 'cbsi.live.ott.irdeto.com', "")
             liz.setProperty(INPUTSTREAM_PROP,'inputstream.adaptive')
             liz.setProperty('inputstream.adaptive.manifest_type', 'mpd')
             liz.setProperty('inputstream.adaptive.license_type', 'com.widevine.alpha')

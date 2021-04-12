@@ -21,7 +21,7 @@ XBMC_VERSION = int(getInfoLabel("System.BuildVersion").split('-')[0].split('.')[
 INPUTSTREAM_PROP = 'inputstream' if XBMC_VERSION >= 19 else 'inputstreamaddon'
 
 PC_UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36'
-LICENCE_KEY_TEMP = '%s|User-Agent=%s&Referer=%s&Authorization=%s&authority=%s|R{SSM}|'
+LICENCE_KEY_TEMP = '%s|User-Agent=%s&Referer=%s&Authorization=%s&authority=%s&Content-Type=%s|R{SSM}|'
 USER_AGENT = "CBSTVE/3519 CFNetwork/1220.1 Darwin/20.3.0"
 headers = {"User-Agent": USER_AGENT}
 BASE_URL = 'https://www.cbs.com'
