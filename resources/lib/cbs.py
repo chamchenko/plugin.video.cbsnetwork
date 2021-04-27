@@ -48,7 +48,9 @@ class CBS(object):
             playbackURL = playbackinfo['playbackURL']
             license_url = playbackinfo['license_url']
             authorization = playbackinfo['authorization']
+            subtitleURL = playbackinfo['subtitleURL']
             liz = xbmcgui.ListItem(name, path=playbackURL)
+            liz.setSubtitles([subtitleURL])
             URL_LICENCE_KEY = LICENCE_KEY_TEMP % (license_url, PC_UA, BASE_URL, authorization, 'cbsi.live.ott.irdeto.com', "")
             liz.setProperty(INPUTSTREAM_PROP,'inputstream.adaptive')
             liz.setProperty('inputstream.adaptive.manifest_type', 'mpd')

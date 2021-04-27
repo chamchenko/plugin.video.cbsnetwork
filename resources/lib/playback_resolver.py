@@ -23,7 +23,7 @@ except ImportError:
 
 
 PID_URL = 'http://can.cbs.com/thunder/player/videoPlayerService.php'
-SMIL_URL = 'https://link.theplatform.com/s/dJ5BDC/%s?mbr=true&manifest=m3u'
+SMIL_URL = 'https://link.theplatform.com/s/dJ5BDC/%s'
 
 
 def playVideo(streaminfo):
@@ -37,10 +37,18 @@ def playVideo(streaminfo):
     resp_ep = urlquick.get(ep_url, headers=headers, max_age=-1).text
     license_url = re.findall(pattern,resp_ep)[0][0].replace('\\','').replace('https','http')
     authorization = re.findall(pattern,resp_ep)[0][1].strip()
-    resp = urlquick.get(SMIL_URL % pid, max_age=-1)    
-    playbackURL = resp.history[0].headers['location']
+    params = {
+                    'mbr': 'true',
+                    'format': 'SMIL'
+            }
+    resp = urlquick.get(SMIL_URL % pid, params=params, max_age=-1).text
+    pattern_mpd = '\<video\ src=\"(.*?)\"'
+    pattern_vtt = 'name\=\"webVTTCaptionURL\"\ value=\"(.*?)\"'
+    playbackURL = re.findall(pattern_mpd,resp)[0]
+    subtitleURL = re.findall(pattern_vtt,resp)[0]
     return json.dumps({
                         'playbackURL': playbackURL,
                         'license_url': license_url,
-                        'authorization': authorization
+                        'authorization': authorization,
+                        'subtitleURL': subtitleURL
                     })
