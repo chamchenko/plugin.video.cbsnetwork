@@ -35,7 +35,7 @@ def playVideo(streaminfo):
     ep_url = json_parser['ep_url']
     pattern = 'widevine\".*\{"url"\:\"(.*?)".*Authorization\"\:\"(.*?)\"'
     resp_ep = urlquick.get(ep_url, headers=headers, max_age=-1).text
-    license_url = re.findall(pattern,resp_ep)[0][0].replace('\\','').replace('https','http')
+    license_url = re.findall(pattern,resp_ep)[0][0].replace('\\','')
     authorization = re.findall(pattern,resp_ep)[0][1].strip()
     params = {
                     'mbr': 'true',
