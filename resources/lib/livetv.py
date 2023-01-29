@@ -25,7 +25,7 @@ PARAMS_LIVE_TV = {
 headers = {"User-Agent": USER_AGENT}
 
 def browseLiveTV():
-    live_tv_url = "https://www.cbs.com/live-tv/stream/cbs-news/"
+    live_tv_url = "https://dai.google.com/linear/hls/pa/event/Sid4xiTQTkCT1SLu6rjUSQ/stream/82d2999b-0c66-4c7d-83e8-1201d7d31bbe:CBF2/variant/ea524505d39e73f6a2da30bf0adce261/bandwidth/3073312.m3u8"
     response = requests.get(live_tv_url)
     if response.status_code != 200:
         print("Error fetching url: " + live_tv_url)
