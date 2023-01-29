@@ -25,21 +25,20 @@ PARAMS_LIVE_TV = {
 headers = {"User-Agent": USER_AGENT}
 
 def browseLiveTV():
-    log(" Fetching url: " + LIVE_TV_URL)
-    items = json.loads(urlquick.get(LIVE_TV_URL, params=PARAMS_LIVE_TV, headers=headers).text)
-    for channel in items['channels']:
-        title = channel['channelName']
-        live_url = channel['currentListing'][0]['contentCANVideo']['liveStreamingUrl']
-        thumb = IMAGES_BASE_URL % channel['filePathLogo'] or ICON
-        fanart = (IMAGES_BASE_URL % channel['currentListing'][0]['filePathThumb'] or
-                 channel['currentListing'][0]['contentCANVideo']['thumbnail'] or
-                 FANART)
-        infoLabels = {"title":title}
-        infoArt = {
-                    "thumb": thumb,
-                    "poster": thumb,
-                    "fanart": fanart,
-                    "icon": thumb,
-                    "logo": thumb
-                }
-        addLink(title, live_url, 8, infoLabels, infoArt, len(items))
+    live_tv_url = "https://www.cbs.com/live-tv/stream/cbs-news/"
+    response = requests.get(live_tv_url)
+    if response.status_code != 200:
+        print("Error fetching url: " + live_tv_url)
+        return
+    live_url = response.url
+    title = "CBS News"
+    addLink(title, live_url, 8)
+    
+    
+   
+        
+        
+import requests
+
+
+        
