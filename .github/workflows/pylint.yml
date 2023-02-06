@@ -1,0 +1,36 @@
+name: Baixando Lista
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Configure Git
+      run: |
+        git config --global user.email "action@github.com"
+        git config --global user.name "GitHub Action"
+    - name: Download and zip repository
+      uses: docker://alpine/git
+      env:
+        GIT_REPOSITORY: https://github.com/guiworldtv/plugin.video.cbsnetwork.git
+        ZIP_FILE: plugin.video.cbsnetwork.ultimo.zip
+      run: |
+        apk add zip
+        git clone $GIT_REPOSITORY
+        cd $(basename $GIT_REPOSITORY .git)
+        zip -r /github/workspace/$ZIP_FILE .
+    - name: Add, commit, and push changes
+      run: |
+        git add -A
+        git commit -m "Download and zip repository"
+        git push
