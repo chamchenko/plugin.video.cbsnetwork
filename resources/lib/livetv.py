@@ -60,7 +60,7 @@ def browseLiveTV():
         title = "CBS News"
         addLink(title, live_url, 8)
 
-    # CBS News 2
+    # CBS News 
     live_tv_url = "https://dai.google.com/ssai/event/Sid4xiTQTkCT1SLu6rjUSQ/master.m3u8"
     response = requests.get(live_tv_url)
     if response.status_code == 200:
@@ -84,7 +84,7 @@ def browseLiveTV():
         title = "CBS News Los Angeles"
         addLink(title, live_url, 8)
 
-    # ET AMERICANO
+    # TV FAMA AMERICANO
     live_tv_url = "https://dai.google.com/linear/hls/event/xrVrJYTmTfitfXBQfeZByQ/master.m3u8"
     response = requests.get(live_tv_url)
     if response.status_code == 200:
