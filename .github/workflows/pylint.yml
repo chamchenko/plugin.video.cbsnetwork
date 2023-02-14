@@ -1,27 +1,18 @@
-name: Baixando Lista
+name: Download do arquivo plugin.video.cbsnetwork.zip
+
 on:
   schedule:
-    - cron: '*/30 * * * *'
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:
+    - cron: "0 0 * * 0" # Executa a cada domingo às 00:00
+
 jobs:
-  build:
+  download:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-    - name: Configure Git
-      run: |
-        git config --global user.email "action@github.com"
-        git config --global user.name "GitHub Action"
-    - name: Tentando
-      run: |
-        wget https://github.com/guiworldtv2/plugin.video.cbsnetwork/archive/refs/heads/dev.zip -O /tmp/plugin.video.cbsnetwork.zip
-        unzip -o /tmp/plugin.video.cbsnetwork.zip -d /tmp/
-        cd /tmp/plugin.video.cbsnetwork-dev
-        zip -r /github/workspace/$ZIP_FILE .
+    - name: Excluir arquivo zip existente
+      run: rm -f plugin.video.cbsnetwork.zip
+    - name: Baixar novo arquivo zip
+      run: curl -o plugin.video.cbsnetwork.zip https://github.com/guiworldtv2/plugin.video.cbsnetwork/archive/refs/heads/dev.zip
+
     - name: Add, commit, and push changes
       run: |
         git add -A
