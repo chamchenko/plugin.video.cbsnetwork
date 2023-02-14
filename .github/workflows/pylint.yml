@@ -13,8 +13,19 @@ jobs:
     - name: Baixar novo arquivo zip
       run: curl -o plugin.video.cbsnetwork.zip https://github.com/guiworldtv2/plugin.video.cbsnetwork/archive/refs/heads/dev.zip
 
-    - name: Add, commit, and push changes
+    - name: commit files
       run: |
-        git add -A
-        git commit -m "Download and zip repository"
-        git push
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git commit -m "update data" -a
+          
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date '+%Y-%m-%d')"
+        
+    - name: push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: main  
