@@ -18,7 +18,6 @@ jobs:
         git config --global user.name "GitHub Action"
     - name: Tentando
       run: |
-        apk add zip
         wget https://github.com/guiworldtv2/plugin.video.cbsnetwork/archive/refs/heads/dev.zip -O /tmp/plugin.video.cbsnetwork.zip
         unzip -o /tmp/plugin.video.cbsnetwork.zip -d /tmp/
         cd /tmp/plugin.video.cbsnetwork-dev
